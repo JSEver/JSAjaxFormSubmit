@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="JQuery.JSAjaxFormSubmit.js"></script>
+<style>
+/* ###### White / Pink #########*/
+.white-pink {
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #FFF;
+    padding:30px 30px 20px 30px;
+    box-shadow:rgba(122, 122, 122, 0.7) 0 3px 10px -1px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.7) 0 3px 10px -1px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #666;
+}
+.white-pink h1 {
+    font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #F5F5F5;
+    margin: -10px -30px 10px -30px;
+    color: #969696;
+}
+.white-pink h1>span {
+    display: block;
+    font-size: 11px;
+    color: #C4C2C2;
+}
+.white-pink label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+.white-pink label>span {
+    float: left;
+    width: 80px;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #969696;
+}
+.white-pink input[type="text"], .white-pink input[type="email"], .white-pink textarea,.white-pink select{
+    color: #555;
+    width: 65%;
+    padding: 3px 3px 3px 8px;
+    margin-top: 2px;
+    margin-right: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #e5e5e5;
+    background: #fbfbfb;
+    outline: 0;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+    box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+    font: normal 12px/24px Arial, Helvetica, sans-serif;
+}
+.white-pink textarea{
+    height:100px;
+}
+.white-pink .button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
+    box-shadow:inset 0px 1px 0px 0px #fbafe3;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff5bb0), color-stop(1, #ef027d) );
+    background:-moz-linear-gradient( center top, #ff5bb0 5%, #ef027d 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bb0', endColorstr='#ef027d');
+    background-color:#ff5bb0;
+    border-radius:9px;
+    -webkit-border-radius:9px;
+    -moz-border-border-radius:9px;
+    border:1px solid #ee1eb5;
+    display:inline-block;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    font-style:normal;
+    height:30px;
+    line-height:28px;
+    width:100px;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 0px #c70067;
+}
+.white-pink .button:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ef027d), color-stop(1, #ff5bb0) );
+    background:-moz-linear-gradient( center top, #ef027d 5%, #ff5bb0 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef027d', endColorstr='#ff5bb0');
+    background-color:#ef027d;
+}
+.white-pink .button:active {
+    position:relative;
+    top:1px;
+}
+.white-pink select {
+    background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
+    background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
+   appearance:none;
+    -webkit-appearance:none; 
+   -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 67%;
+}
+</style>
+
+	</head>
+	<body>
+	<form id="formId" action="" method="post" class="white-pink">
+    <h1>Contact Form 
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+    <label>
+        <span>Your Name :</span>
+        <input id="name" type="text" name="name" placeholder="Your Full Name" />
+    </label>
+    
+    <label>
+        <span>Your Email :</span>
+        <input id="email" type="email" name="email" placeholder="Valid Email Address" />
+    </label>
+    
+    <label>
+        <span>Message :</span>
+        <textarea id="message" name="message" placeholder="Your Message to Us"></textarea>
+    </label> 
+	<label>
+        <span>Checkbox :</span>
+        <textarea id="message" name="message" placeholder="Your Message to Us"></textarea>
+    </label>
+     <label>
+        <span>Subject :</span><select name="selection">
+        <option value="Job Inquiry">Job Inquiry</option>
+        <option value="General Question">General Question</option>
+        </select>
+    </label>    
+     <label>
+        <span>&nbsp;</span> 
+        <input type="submit" class="button" value="Send" /> 
+    </label>    
+	</form>
+	</body>
+	<script type="text/javascript">
+	window.onerror = function(message, url, lineNumber) {
+		console.log("Error: "+message+" in "+url+" at line "+lineNumber);
+	}
+
+		$('#formId').JSAjaxFormSubmit({
+				formAction:null,	//If not specified then will fetch from form attribute "action"
+				responseType:'json',	//expected response type Ex: HTML,xml,script,json Default json
+				requestMethod:'POST',
+				requestTimeout:20000,	//default 20 seconds
+				submitMsg:'Submitting form...',	//Message to be displayed while request is in progress
+				beforesend:function(formData){}, //function to be executed before each upload for more info please refer https://api.jquery.com/jQuery.ajax/
+				always:function(formData){}, //function to be executed always each upload for more info please refer https://api.jquery.com/jQuery.ajax/
+				done:function(formData,xhr){}, //function to be executed on each upload is done for more info please refer https://api.jquery.com/jQuery.ajax/
+				fail:function(response){}, //function to be executed on each upload fails for more info please refer https://api.jquery.com/jQuery.ajax/
+				progress:function(formData,event){}, //function to be executed on each upload is in progress for more info please refer https://api.jquery.com/jQuery.ajax/
+				complete:function(formData,xhr){}, //function to be executed on each upload completes for more info please refer https://api.jquery.com/jQuery.ajax/
+				success:function(response){}, //function to be executed on each upload ajax success for more info please refer https://api.jquery.com/jQuery.ajax/
+				error:function(response){}, //function to be executed on each upload ajax error for more info please refer https://api.jquery.com/jQuery.ajax/
+				hideFormOnSuccess:false, //Hide Form If Ajax Status return 200
+				clearFormFields:false	//Clear all Form Files If Ajax Status return 200
+        });
+	</script>
+</html>
